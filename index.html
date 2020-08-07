@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>palette</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- ここにパレットを表示 -->
+      <div class="palette" @mousemove="changeColor" :style="paletteStyle" @click="pickColors"></div>
+      <p>rgba ({{ red }}, {{ green }}, 200, 0.5)</p>
+      <!-- ここにミニパレットを表示 -->
+      <div class="colors-container">
+        <div class="mini-palette" v-for="color in colors" :style="{ backgroundColor: `rgba(${color.red}, ${color.green}, 200, 0.5)` }" @click="showColor(color)"></div>
+      </div>
+    </div>
+
+    <style>
+      #app {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .palette {
+        width: 255px;
+        height: 255px;
+        background-color: black;
+      }
+
+      .mini-palette {
+        min-width: 60px;
+        height: 60px;
+      }
+
+      .colors-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        padding-top: 8px;
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
